@@ -1,5 +1,6 @@
 package com.ibm.mobilefirst.myportfolio.ui.login
 
+import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,6 +9,7 @@ import com.ibm.mobilefirst.myportfolio.data.LoginRepository
 import com.ibm.mobilefirst.myportfolio.data.Result
 
 import com.ibm.mobilefirst.myportfolio.R
+import com.ibm.mobilefirst.myportfolio.portfolio.PortfolioActivity
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
@@ -26,6 +28,12 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         } else {
             _loginResult.value = LoginResult(error = R.string.login_failed)
         }
+    }
+
+    fun navigateToPortfolio(activity: LoginActivity) {
+        // can be launched in a separate asynchronous job
+        val intent = Intent(activity, PortfolioActivity::class.java)
+        activity.startActivity(intent)
     }
 
     fun loginDataChanged(username: String, password: String) {

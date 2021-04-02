@@ -17,7 +17,25 @@ android {
     }
 
     buildTypes {
+        debug{
+            def PUBLIC_KEY = "29b58bd88d30b0ae5553646ffbdf32e4d5814f301db654b8033c7097a4002ba9"
+            def PRVATE_KEY = "e38cd4fbb1b3870e291de688c6a687815765a6f1cf62e4a1224d68895c75e8b60a49c63350e6f53688a379d66bd4bb71cee146117f7723e0496225b206a32e6f"
+
+            def PORTFOLIO_HOST_URL = "aboutmarios.com/bio"
+            buildConfigField "String", "PORTFOLIO_BASE_URL", "\"https://${PORTFOLIO_HOST_URL}\""
+
+            def BINANCE_TICKER = "dev-api.shrimpy.io/v1/exchanges/binance/ticker"
+            buildConfigField "String", "BINANCE_TICKER_URL", "\"http://${BINANCE_TICKER}\""
+        }
         release {
+            def PUBLIC_KEY = "29b58bd88d30b0ae5553646ffbdf32e4d5814f301db654b8033c7097a4002ba9"
+            def PRVATE_KEY = "e38cd4fbb1b3870e291de688c6a687815765a6f1cf62e4a1224d68895c75e8b60a49c63350e6f53688a379d66bd4bb71cee146117f7723e0496225b206a32e6f"
+
+            def PORTFOLIO_HOST_URL = "aboutmarios.com/bio"
+            buildConfigField "String", "PORTFOLIO_BASE_URL", "\"http://${PORTFOLIO_HOST_URL}\""
+
+            def BINANCE_TICKER = "dev-api.shrimpy.io/v1/exchanges/binance/ticker"
+            buildConfigField "String", "BINANCE_TICKER_URL", "\"https://${BINANCE_TICKER}\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -33,8 +51,10 @@ android {
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.activity:activity-ktx:1.2.2'
+    implementation "androidx.fragment:fragment-ktx:1.3.2"
     implementation 'androidx.core:core-ktx:1.3.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.annotation:annotation:1.1.0'
